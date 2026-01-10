@@ -17,3 +17,11 @@ C, C++, Python, Powershell, Bash, Rustの基礎
 ### Step3
 ループについて
 - `for`, `while`, `rand`, `sleep`, `break`
+### Step4
+配列について
+
+## C++
+## Python
+## Powershell
+## Bash
+## Rust
