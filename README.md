@@ -14,3 +14,6 @@ C, C++, Python, Powershell, Bash, Rustの基礎
 条件分岐について
 - `if`, `else if`, `else`, `switch`, `scanf`
 - `&`
+### Step3
+ループについて
+- `for`, `while`, `rand`, `sleep`, `break`
