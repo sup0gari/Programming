@@ -4,9 +4,13 @@ C, C++, Python, Powershell, Bash, Rustの基礎
 ## C
 ### Step1
 変数と型について
-- int 4byte
-- char 1byte
-- long long 8byte
-- unsigned char 8byte(符号無し)
+- int (4byte)
+- char (1byte)
+- long long (8byte)
+- unsigned char (8byte, 符号無し)
 - `%zu`, `%d`
 - `printf`
+### Step2
+条件分岐について
+- `if`, `else if`, `else`, `switch`, `scanf`
+- `&`
