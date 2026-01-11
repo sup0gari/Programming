@@ -19,6 +19,8 @@ C, C++, Python, Powershell, Bash, Rustの基礎
 - `for`, `while`, `rand`, `sleep`, `break`
 ### Step4
 配列について
+- 1次元配列、２次元配列
+- `strcmp`
 
 ## C++
 ## Python
