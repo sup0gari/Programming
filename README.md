@@ -7,7 +7,7 @@ C, C++, Python, Powershell, Bash, Rustの基礎
 - `int` (4byte)
 - `char` (1byte)
 - `long long` (8byte)
-- `unsigned char` (8byte, 符号無し)
+- `unsigned char` (1byte, 符号無し)
 - `%zu`, `%d`
 - `printf`
 ### Step2
