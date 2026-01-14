@@ -29,8 +29,13 @@
 ### Step7
 ヒープについて
 - `malloc`, `free`
-- `strncpy` `strcpy`
+- `strncpy`, `strcpy`
 ### Step8
 ダブルポインタについて  
 値を変更したいときはポインタを、アドレスを変更したいときはそのアドレスのポインタを渡す。
 - `**`
+### Step9
+構造体について
+- `struct`, `fgets`, `strcspn`
+- アロー演算子
+- メンバアクセス
