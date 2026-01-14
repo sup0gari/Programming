@@ -29,6 +29,10 @@ C, C++, Python, Powershell, Bash, Rustの基礎
 ### Step6
 関数について
 - 戻り値、引数、スコープ
+### Step7
+ヒープについて
+- `malloc`, `free`
+- `strncpy` `strcpy`
 
 ## C++
 ## Python
