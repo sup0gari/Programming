@@ -74,3 +74,23 @@ Enterキーが押されたかどうかを判定する
 - `MEM_RESERVE`
 - `PAGE_READWRITE`
 - `MEM_RELEASE`
+
+## Day3
+`ntdll.dll`にあるWin32 APIのハンドルを取得し、先頭の数バイトを表示する。
+### Win32 API
+- `GetModuleHandleA`  
+**読み込んでいるモジュールのベースアドレスを取得**  
+第一引数にモジュール名(LPCSTR)
+- `GetProcAddress`  
+**読み込んでいるモジュールにある関数のアドレスを取得**  
+第一引数にモジュールのベースアドレス(HMODULE)  
+第二引数にモジュール内の関数名(LPCSTR)
+### Window標準のシステムコール
+5バイト目にSSN(syscall number)がある。SSNは4byte(DWORD)である。  
+このSSNによって実行する内容が異なる。EDRなどにシステムコールをフックされている場合はこの8byteの部分が異なる可能性があるため、攻撃者は先頭8byteを書き換えてバイパスする。
+ユーザーモードで動くプログラムは`ntdll.dll`を介してシステムコールする。
+```assembly
+mov r10,rcx   ; 0x4C 0x8B 0xD1
+mov eax,<SSN> ; 0xB8 <SSN>
+syscall       ; 0x0F 0x05
+```
