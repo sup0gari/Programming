@@ -94,3 +94,16 @@ mov r10,rcx   ; 0x4C 0x8B 0xD1
 mov eax,<SSN> ; 0xB8 <SSN>
 syscall       ; 0x0F 0x05
 ```
+
+## Day4
+`GetProcAddress`がフックされていることを考慮し、NT HeadersでWin32 APIのアドレスを特定し、先頭数バイトを確認する。
+- PE(Portable Excutable)  
+Windowsにおける`.exe`や`.dll`の共通フォーマットで、プログラム実行時にどこにコードがあり、どこに関数リストがあるかを知るための情報がファイルやメモリの先頭に必ず書き込まれている
+1. DOS Header  
+すべてのWindowsファイルの先頭にある互換性維持用のヘッダー  
+`e_lfanew`という関数にNT Headersへのオフセットが記載されている  
+2. NT Headers  
+DLLのビット数や、関数の場所などが記されている部分  
+`DataDirectory`という配列の0番目にExport Directoryという関数のアドレスリストへのベースアドレスからのオフセットが書かれている。
+3. Sections  
+`.text`や`.data`などの領域
