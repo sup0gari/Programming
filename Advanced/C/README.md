@@ -96,7 +96,7 @@ syscall       ; 0x0F 0x05
 ```
 
 ## Day4
-`GetProcAddress`がフックされていることを考慮し、NT HeadersでWin32 APIのアドレスを特定し、先頭数バイトを確認する。
+NT HeadersでWin32 APIのアドレスを特定し、先頭数バイトを確認して、フックされているものを列挙する。
 - PE(Portable Excutable)  
 Windowsにおける`.exe`や`.dll`の共通フォーマットで、プログラム実行時にどこにコードがあり、どこに関数リストがあるかを知るための情報がファイルやメモリの先頭に必ず書き込まれている
 1. DOS Header  
