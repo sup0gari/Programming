@@ -107,3 +107,10 @@ DLLのビット数や、関数の場所などが記されている部分
 `DataDirectory`という配列の0番目にExport Directoryという関数のアドレスリストへのベースアドレスからのオフセットが書かれている。
 3. Sections  
 `.text`や`.data`などの領域
+
+## Day5
+`amsi.dll`のAPIである`AmsiScanBuffer`の先頭バイトを書き換え、強制的にスキャン結果を「安全」で返す。
+1. `LoadLibraryA`で`amsi.dll`のベースアドレスを取得
+2. `GetProcAddress`で`AmsiScanBuffer`のアドレスを特定
+3. `VirtualProtect`で書き込み権限を付与して、`memcpy`でメモリにパッチを当てる
+4. `VirtualProtect`で権限を元に戻す
