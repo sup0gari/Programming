@@ -114,3 +114,11 @@ DLLのビット数や、関数の場所などが記されている部分
 2. `GetProcAddress`で`AmsiScanBuffer`のアドレスを特定
 3. `VirtualProtect`で書き込み権限を付与して、`memcpy`でメモリにパッチを当てる
 4. `VirtualProtect`で権限を元に戻す
+
+## Day6
+自作のDLLを作成し、任意のプロセスにロードすることでそのプロセスの権限でペイロードを実行する。  
+`CreateRemoteThread`というAPIを使用し、ターゲットプロセスの中に新しいスレッドを作成し、`LoadLibraryA`を実行させて自作のDLLを読み込ませる。  
+DLLには実行ファイルの`main`にあたる`DllMain`というエントリポイントがある。下記dll作成コマンド。
+```cmd
+cl.exe /LD day6_1.c /Fe:day6_1.dll
+```
