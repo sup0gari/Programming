@@ -43,3 +43,13 @@ C++の基礎について
 `virtual`を使用したオーバーライド宣言により、ポリモーフィズムを機能させる。
 - ポリモーフィズム
 プログラム実行時に、クラスを判断し、中身に応じて処理を行う。
+## Step7
+Standard Template Library1
+- vector  
+メモリ領域を動的に確保する動的配列。  
+`push_back`, `insert`で挿入。`erase`で削除。
+- string  
+`+`, `==`, `!=`での連結と比較。`find`で検索。`replace`で置換。`substr`で抽出。
+- map  
+KeyとValueのペアを管理する。  
+自動ソート、紐づけ、一意性が特徴。
