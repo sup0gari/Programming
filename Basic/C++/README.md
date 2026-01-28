@@ -53,3 +53,11 @@ Standard Template Library1
 - map  
 KeyとValueのペアを管理する。  
 自動ソート、紐づけ、一意性が特徴。
+## Step8
+Standard Template Library2
+- Iterator  
+vectorなどの中の要素を示す矢印のこと。list, set, mapでも使用可能。
+- `std::sort`  
+指定した範囲のデータをアルファベット順に並び替える
+- `std::find`  
+指定した範囲のデータから検索する
