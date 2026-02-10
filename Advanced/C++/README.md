@@ -4,4 +4,6 @@
 ## Day2
 標準入力で指定された`ntdll.dll`のNative APIの先頭バイトを表示する。
 ## Day3
-標準入力からプロセスIDを取得し、そのプロセスに読み込まれいる`amsi.dll`を無効化する。
+標準入力からプロセスIDを取得し、そのプロセスに読み込まれている`amsi.dll`を無効化する。
+## Day4
+標準入力からプロセスIDを取得し、そのプロセスに読み込まれている`ntdll.dll`の`EtwEventWriteTransfer`を無効化する。
