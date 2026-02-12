@@ -123,6 +123,8 @@ DLLには実行ファイルの`main`にあたる`DllMain`というエントリ�
 cl.exe /LD day6_1.c /Fe:day6_1.dll
 ```
 
-## Day7
-Reflective DLL Injection  
-保留中。。。
+## Userhook
+任意のプロセスのNative apiをフックし、呼び出されたときに通知するプログラムを作成する。
+### Step1
+インジェクターの作成  
+指定したプロセスにDLLを読み込ませる。
