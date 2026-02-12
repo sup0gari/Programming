@@ -126,5 +126,9 @@ cl.exe /LD day6_1.c /Fe:day6_1.dll
 ## Userhook
 任意のプロセスのNative apiをフックし、呼び出されたときに通知するプログラムを作成する。
 ### Step1
-インジェクターの作成  
-指定したプロセスにDLLを読み込ませる。
+インジェクターとダミーのDLLの作成  
+指定したプロセスに任意のメモリ領域を確保し、DLLを読み込ませる。
+```powershell
+cl.exe /LD userhook_dummy.c /link /OUT:C:\tmp\userhook_dummy.dll
+cl.exe step1.c /OUT:step1.exe
+```

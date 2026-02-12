@@ -1,4 +1,7 @@
 day*.exe
 day*.obj
 day*.dll
+Userhook/Step1/step*.exe
+Userhook/Step1/*.obj
+Userhook/Step1/*.dll
 Userhook/step*.exe
