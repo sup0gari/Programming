@@ -134,3 +134,5 @@ cl.exe step1.c /OUT:step1.exe
 ```
 ### Step2
 フックと、通知機能を実装したDLLの作成  
+### Step3
+Step1とStep2の統合。
