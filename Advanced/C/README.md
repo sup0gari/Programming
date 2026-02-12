@@ -132,3 +132,5 @@ cl.exe /LD day6_1.c /Fe:day6_1.dll
 cl.exe /LD userhook_dummy.c /link /OUT:C:\tmp\userhook_dummy.dll
 cl.exe step1.c /OUT:step1.exe
 ```
+### Step2
+フックと、通知機能を実装したDLLの作成  
