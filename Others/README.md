@@ -12,3 +12,9 @@ gcc -o step1 fake_mp4\step1.c -lws2_32 -mwindows
 AMSIとETWをパッチする機能を追加する。
 ## Step3
 自身のプロセスを起動後、プロセスインジェクションでプログラムを実行する。
+## Step4
+永続化を図る。
+## Step5
+Windows Defenderを回避する。
+## Step6
+ブラウザのセーフブラウジングを回避する。
