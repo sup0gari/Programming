@@ -10,6 +10,5 @@ gcc -o step1 fake_mp4\step1.c -lws2_32 -mwindows
 ```
 ## Step2
 AMSIとETWをパッチする機能を追加する。
-```powershell
-gcc -o step2 fake_mp4\step2.c -lws2_32 -mwindows
-```
+## Step3
+自身のプロセスを起動後、プロセスインジェクションでプログラムを実行する。
