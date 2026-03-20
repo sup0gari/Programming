@@ -4,3 +4,10 @@ day*.dll
 Userhook/Step*/*.exe
 Userhook/Step*/*.obj
 Userhook/Step*/*.dll
+Kernel/Step*/*.sys
+Kernel/Step*/*.obj
+Kernel/Step*/*.lib
+Kernel/Step*/*.exp
+Kernel/Step*/*.inf
+Kernel/Step*/*.log
+Kernel/Step*/*.pdb

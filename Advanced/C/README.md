@@ -136,3 +136,27 @@ cl.exe step1.c /OUT:step1.exe
 フックと、通知機能を実装したDLLの作成  
 ### Step3
 Step1とStep2の統合。
+
+## Kernel Driver
+カーネルドライバーを自作する。
+### Step1
+デバッガへ文字列を出力するだけのカーネルドライバー  
+カーネルドライバーは以下の３つが必要
+- `main.c`
+- `sources`
+- `makefile`  
+1. ビルド
+```powershell
+cl /c /Zi /nologo /W3 /WX- /Od /Oi /D _AMD64_ /D _KERNEL_MODE /I "C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\km" main.c
+
+link /NODEFAULTLIB /INCREMENTAL:NO /SUBSYSTEM:NATIVE /DRIVER /ENTRY:DriverEntry /OUT:Step1.sys main.obj "C:\Program Files (x86)\Windows Kits\10\Lib\10.0.26100.0\km\x64\ntoskrnl.lib"
+```
+2. ロード  
+- ※必ず仮想環境でセキュアブートをオフにする
+- スタートアップ設定でDSEを無効にする
+```powershell
+bcdedit /set testsigning on
+sc.exe create Step1 type= kernel binPath= "C:\Users\sup0gari\Desktop\Step1.sys"
+sc.exe start Step1
+sc.exe stop Step1
+```
