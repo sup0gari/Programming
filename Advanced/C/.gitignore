@@ -11,3 +11,5 @@ Kernel/Step*/*.exp
 Kernel/Step*/*.inf
 Kernel/Step*/*.log
 Kernel/Step*/*.pdb
+Kernel/Step*/*.exe
+Kernel/Step*/*.ilk
