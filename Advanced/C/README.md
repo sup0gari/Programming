@@ -180,26 +180,3 @@ cl /c /Zi /nologo /W3 /WX- /Od /Oi /D _AMD64_ /D _KERNEL_MODE /I "C:\Program Fil
 
 link /NODEFAULTLIB /INCREMENTAL:NO /SUBSYSTEM:NATIVE /DRIVER /ENTRY:DriverEntry /OUT:Step2.sys main.obj "C:\Program Files (x86)\Windows Kits\10\Lib\10.0.26100.0\km\x64\ntoskrnl.lib"
 ```
-
-### Step3
-DKOM(Direct Kernel Object Manipulation)によるプロセスの隠蔽を行う。  
-10秒ごとにファイル書き込みを行う`count.exe`を作成し、それを隠蔽する。
-
-1. `count.exe`のビルド
-```powershell
-cl.exe /EHsc /Zi /Od /MT count.cpp /link /OUT:count.exe
-```
-2. カーネルドライバーのビルド
-- ターゲットプロセスの`Flink`をターゲットの次の要素に向ける。
-- ターゲットプロセスの次の要素の`Blink`をターゲットプロセスの前の要素に向ける。
-```powershell
-cl /c /Zi /nologo /W3 /WX- /Od /Oi /D _AMD64_ /D _KERNEL_MODE /I "C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\km" main.c
-
-link /NODEFAULTLIB /INCREMENTAL:NO /SUBSYSTEM:NATIVE /DRIVER /ENTRY:DriverEntry /OUT:Step3.sys main.obj "C:\Program Files (x86)\Windows Kits\10\Lib\10.0.26100.0\km\x64\ntoskrnl.lib"
-```
-3. 確認
-```powershell
-tasklist | findstr count
-Get-Process count
-Get-Process -id <PID>
-```
