@@ -21,8 +21,6 @@ spinner() {
     printf "    \b\b\b\b"
 }
 
-echo "[*] Phase 1: Scanning all ports on $IP (High Speed)..."
-
 (nmap -p- -Pn --min-rate=5000 $IP | grep '^[0-9]' | cut -d '/' -f1 | tr '\n' ',' | sed 's/,$//' > /tmp/ports.txt) &
 
 spinner $!
