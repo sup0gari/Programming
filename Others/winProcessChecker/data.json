@@ -1,0 +1,78 @@
+{
+  "System": {
+    "expected_parent": null,
+    "expected_count": 1
+  },
+  "MemCompression": {
+    "expected_parent": "System",
+    "expected_count": 1
+  },
+  "Registry": {
+    "expected_parent": "System",
+    "expected_count": 1
+  },
+  "smss.exe": {
+    "expected_parent": "System",
+    "expected_count": 1
+  },
+  "csrss.exe": {
+    "expected_parent": "smss.exe",
+    "expected_count": "2 or more"
+  },
+  "wininit.exe": {
+    "expected_parent": "smss.exe",
+    "expected_count": 1
+  },
+  "services.exe": {
+    "expected_parent": "wininit.exe",
+    "expected_count": 1
+  },
+  "lsass.exe": {
+    "expected_parent": "wininit.exe",
+    "expected_count": 1
+  },
+  "svchost.exe": {
+    "expected_parent": "services.exe",
+    "expected_count": "Many"
+  },
+  "winlogon.exe": {
+    "expected_parent": "smss.exe",
+    "expected_count": 1
+  },
+  "dwm.exe": {
+    "expected_parent": "winlogon.exe",
+    "expected_count": 1
+  },
+  "explorer.exe": {
+    "expected_parent": "userinit.exe",
+    "expected_count": "1 or more"
+  },
+  "taskhostw.exe": {
+    "expected_parent": "svchost.exe",
+    "expected_count": "Many"
+  },
+  "RuntimeBroker.exe": {
+    "expected_parent": "svchost.exe",
+    "expected_count": "Many"
+  },
+  "SgrmBroker.exe": {
+    "expected_parent": "services.exe",
+    "expected_count": 1
+  },
+  "ctfmon.exe": {
+    "expected_parent": "svchost.exe",
+    "expected_count": "1 or more"
+  },
+  "fontdrvhost.exe": {
+    "expected_parent": "winlogon.exe",
+    "expected_count": "1 or more"
+  },
+  "SearchIndexer.exe": {
+    "expected_parent": "services.exe",
+    "expected_count": 1
+  },
+  "spoolsv.exe": {
+    "expected_parent": "services.exe",
+    "expected_count": 1
+  }
+}
