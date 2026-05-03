@@ -22,7 +22,7 @@ def check():
             result[name] = info
 
     if not result:
-        print(f"\n[!] Not found for '{query}'.")
+        print(f"[!] Not found for '{query}'.")
         return
     
     print(f"[+] Found: '{query}'")
