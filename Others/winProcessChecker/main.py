@@ -2,9 +2,12 @@
 
 import json
 import os
+import sys
 
 def check():
-    json_path = 'data.json'
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    json_path = os.path.join(base_path, 'data.json')
+
     if not os.path.exists(json_path):
         print(f"Error: {json_path} not found.")
         return
