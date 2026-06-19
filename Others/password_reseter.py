@@ -25,7 +25,8 @@ def reset_password(uid, token, ip):
         'password': ''
     }
     url = "http://" + ip + "/reset.php"
-    response = requests.post(url, data=payload)
+    # response = requests.post(url, data=payload)
+    response = requests.get(url, params=payload)
     if response.status_code == 200 and "Password changed successfully" in response.text:
         print(f"Password changed for UID: {uid}")
     else:
